@@ -8,31 +8,36 @@
 
 using System.Globalization;
 
-Console.Write("Enter number: ");
+Console.Write("Enter number (1 - 100000): ");
 string strNumber = Console.ReadLine()!;
 int index = strNumber.Length;
 int initNumber = Convert.ToInt32(strNumber);
 int[] numArray = new int[index];
 
-for (int rang = index; rang > 0; rang--)  // Убывающий цикл для поиска числа от старшего разряда к младнему 
+if (index > 0 && index < 7)
 {
-    int number = initNumber;              // Переменая для поиска числа в разряде
-    for (int i = 1; i <= rang; i++)
+    for (int rang = index; rang > 0; rang--)  // Убывающий цикл для поиска числа от старшего разряда к младнему 
     {
-        int digit = number % 10;          // запись в digit крайнего левого числа
-        if (i == rang)                    // Если верно, достигли старшего разряда
+        int number = initNumber;              // Переменая для поиска числа в разряде
+        for (int i = 1; i <= rang; i++)
         {
-            numArray[index - rang] = digit;         // Пишем в массив полученное число
+            int digit = number % 10;          // запись в digit крайнего левого числа
+            if (i == rang)                    // Если верно, достигли старшего разряда
+            {
+                numArray[index - rang] = digit;         // Пишем в массив полученное число
+            }
+            number /= 10;                                // Отбрасываем последний разряд
         }
-        number /= 10;                                // Отбрасываем последний разряд
     }
+
+    Console.Write("Numbers in array: [ ");
+    foreach (int item in numArray)
+    {
+        Console.Write($"{item} ");
+    }
+    Console.Write("]");
 }
-
-
-
-Console.Write("Numbers in array: [ ");
-foreach (int item in numArray)
+else
 {
-    Console.Write($"{item} ");
+    Console.Write("Number not in range (1 - 100000)");
 }
-Console.Write("]");
