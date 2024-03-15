@@ -13,12 +13,30 @@ class UserInputToCompileForTest
     public static double FindMin(double[] numbers)
     {
         //Напишите свое решение здесь
+        double minElem = numbers[0];
+        foreach (double item in numbers)
+        {
+            if (item < minElem)
+            {
+                minElem = item;
+            }
+        }
+        return minElem;
     }
     
     // Нахождение максимума массива
     public static double FindMax(double[] numbers)
     {
         //Напишите свое решение здесь
+        double maxElem = numbers[0];
+        foreach (double item in numbers)
+        {
+            if (item > maxElem)
+            {
+                maxElem = item;
+            }
+        }
+        return maxElem;
     }
     
     
@@ -26,6 +44,7 @@ class UserInputToCompileForTest
     public static void PrintResult(double[] array)
     {
         //Напишите свое решение здесь
+        Console.Write(FindMax(array) - FindMin(array));
     }
 }
 
